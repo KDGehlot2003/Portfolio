@@ -283,7 +283,8 @@ a.active {
 
 #home {
     background: url(../img/home-bg-2.jpg);
-    background-size: cover;
+    background-size: auto;
+    /* background-size: cover; */
     height: 100vh;
 }
 
@@ -756,6 +757,29 @@ fieldset {
     color: #425BB5;
 }
 
+#profilepic{
+    margin-top: 150px;
+    margin-left: 500px;
+}
+
+#resumediv{
+    margin-top: 25px;
+    width: 140px;
+    height: 40px;
+    border-radius: 5px;
+    padding-top: 6px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+    outline: none;
+  }
+
 
 /* Responsive media queries
 ==================================================*/
@@ -792,40 +816,37 @@ fieldset {
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 431px) {
     nav li {
         margin: 6px;
     }
     nav li a {
-        font-size: 10px;
+        font-size: 6px;
+    }
+    #home {
+        height: 500px;
+    
+    }
+    #profilepic{
+        margin: 40px 30px 0px 50px;
+        width: 300px;
+    }
+    .table-cell{
+        display: block;
+        margin: 120px 30px 0px 24px;
+
+    }
+    .table-cell h1{
+        font-size: 30px;
+    }
+    .table-cell h4{
+        font-size: 20px;
+        margin-left: 0px;
+    }
+    #resumediv{
+        margin-top: 0px;
     }
 }
-
-
-
-#profilepic{
-    margin-top: 150px;
-    margin-left: 500px;
-}
-
-
-#resumediv{
-    margin-top: 25px;
-    width: 140px;
-    height: 40px;
-    border-radius: 5px;
-    padding-top: 6px;
-    padding-bottom: 30px;
-    text-align: center;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    border: 1px solid black;
-    outline: none;
-  }
 
   #resumediv a{
     color: black;
@@ -996,4 +1017,10 @@ fieldset {
 #experience{
     padding-top: 60px;
     padding-bottom: 40px;
+}
+
+
+#home {
+    width: 100%;
+    height: 800px;
 }
