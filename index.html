@@ -596,7 +596,7 @@
             </li>
             <!-- <li> 
               <a href="#"><i class="">
-                 <img src="/img/icons/leetcode.svg" id="leetcode-icon-footer" alt="">
+                <img src="/img/icons/leetcode.svg" id="leetcode-icon-footer" alt="">
               </i>
             </a>
             </li> -->
@@ -657,6 +657,39 @@
               </p>
             </div>
           </form>
+        
+        <script>
+            const form = document.getElementById("contact-form");
+            form.addEventListener("submit", formSubmit);
+        
+            function formSubmit(e) {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+        
+                fetch("https://getform.io/f/lakmlrma", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json",
+                    },
+                })
+                .then(response => {
+                  console.log(response)
+                  $('#contact :input').attr('disabled', 'disabled');
+                        $('#contact').fadeTo("slow", 1, function () {
+                            $(this).find(':input').attr('disabled', 'disabled');
+                            $(this).find('label').css('cursor', 'default');
+                            $('#success').fadeIn();
+                        });
+                })
+                .catch(error => {
+                  console.log(error)
+                  $('#contact').fadeTo("slow", 1, function () {
+                            $('#error').fadeIn();
+                        });
+                })
+            }
+        </script>
         </div>
       </div>
     </div>
