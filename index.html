@@ -13,6 +13,7 @@
     <link href="css/aos.css" rel="stylesheet" />
     <!-- main style -->
     <link href="css/style.css" rel="stylesheet" />
+    <!-- vercel-insights -->
     <script defer src="https://cdn.vercel-insights.com/v1/script.debug.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -658,15 +659,34 @@
               </p>
             </div>
           </form>
-        
-        <script>
+
+          <script>
             const form = document.getElementById("contact-form");
             form.addEventListener("submit", formSubmit);
-        
+
             function formSubmit(e) {
                 e.preventDefault();
                 const formData = new FormData(e.target);
-        
+
+                console.log(formData);
+
+                       // Check if required fields are empty
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                
+                if (!name || !email || !message) {
+                    alert("Please fill in all the required fields (name, email, and message).");
+                    return;
+                }
+
+                // Check if email is valid
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return;
+                }
+
                 fetch("https://getform.io/f/pamqnxda", {
                     method: "POST",
                     body: formData,
@@ -675,22 +695,22 @@
                     },
                 })
                 .then(response => {
-                  console.log(response)
-                  $('#contact :input').attr('disabled', 'disabled');
-                        $('#contact').fadeTo("slow", 1, function () {
-                            $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor', 'default');
-                            $('#success').fadeIn();
-                        });
+                    console.log(response)
+                    $('#contact :input').attr('disabled', 'disabled');
+                    $('#contact').fadeTo("slow", 1, function () {
+                        $(this).find(':input').attr('disabled', 'disabled');
+                        $(this).find('label').css('cursor', 'default');
+                        $('#success').fadeIn();
+                    });
                 })
                 .catch(error => {
-                  console.log(error)
-                  $('#contact').fadeTo("slow", 1, function () {
-                            $('#error').fadeIn();
-                        });
+                    console.log(error)
+                    $('#contact').fadeTo("slow", 1, function () {
+                        $('#error').fadeIn();
+                    });
                 })
             }
-        </script>
+          </script>
         </div>
       </div>
     </div>
